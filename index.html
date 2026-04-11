@@ -321,8 +321,8 @@
     }
 
     .modal {
-      background: #0a1420;
-      border: 1px solid rgba(195,228,248,0.12);
+      background: var(--bg);
+      border: 1px solid var(--border);
       border-radius: 8px;
       width: 100%;
       max-width: 720px;
@@ -342,7 +342,7 @@
       justify-content: space-between;
       gap: 16px;
       padding: 28px 28px 20px;
-      border-bottom: 1px solid rgba(195,228,248,0.08);
+      border-bottom: 1px solid var(--border);
     }
 
     .modal-meta {
@@ -378,7 +378,7 @@
 
     .modal-close {
       background: none;
-      border: 1px solid rgba(195,228,248,0.12);
+      border: 1px solid var(--border);
       border-radius: 4px;
       color: var(--muted);
       cursor: pointer;
@@ -405,10 +405,10 @@
       position: relative;
       width: 100%;
       padding-bottom: 56.25%;
-      background: #060c12;
+      background: var(--surface);
       border-radius: 4px;
       overflow: hidden;
-      border: 1px solid rgba(195,228,248,0.08);
+      border: 1px solid var(--border);
     }
 
     .modal-embed iframe {
@@ -424,7 +424,7 @@
       align-items: center;
       gap: 8px;
       padding: 10px 20px;
-      border: 1px solid rgba(195,228,248,0.18);
+      border: 1px solid var(--border);
       border-radius: 4px;
       color: var(--text-dim);
       text-decoration: none;
@@ -437,7 +437,7 @@
     .modal-article {
       margin-top: 36px;
       padding-top: 32px;
-      border-top: 1px solid rgba(195,228,248,0.08);
+      border-top: 1px solid var(--border);
     }
 
     .modal-article-date {
