@@ -257,8 +257,12 @@
       padding: 22px 20px;
       border: 1px solid transparent;
       border-radius: 6px;
-      text-decoration: none;
+      background: none;
+      font-family: inherit;
       color: inherit;
+      text-align: left;
+      width: 100%;
+      cursor: pointer;
       transition: background 0.15s, border-color 0.15s;
     }
 
@@ -293,6 +297,142 @@
       transform: translateX(-5px);
       transition: opacity 0.15s, transform 0.15s;
     }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(2,8,16,0.82);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal {
+      background: #0a1420;
+      border: 1px solid rgba(195,228,248,0.12);
+      border-radius: 8px;
+      width: 100%;
+      max-width: 720px;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: translateY(12px);
+      transition: transform 0.2s ease;
+    }
+
+    .modal-backdrop.open .modal {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 28px 28px 20px;
+      border-bottom: 1px solid rgba(195,228,248,0.08);
+    }
+
+    .modal-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .modal-date {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .modal-tag {
+      padding: 2px 8px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.6);
+      border-radius: 4px;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .modal-title {
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    .modal-close {
+      background: none;
+      border: 1px solid rgba(195,228,248,0.12);
+      border-radius: 4px;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 6px 8px;
+      font-size: 1rem;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .modal-close:hover { border-color: var(--accent); color: var(--text); }
+
+    .modal-body { padding: 24px 28px 28px; }
+
+    .modal-detail {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--text-dim);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .modal-embed {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #060c12;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(195,228,248,0.08);
+    }
+
+    .modal-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .modal-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border: 1px solid rgba(195,228,248,0.18);
+      border-radius: 4px;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .modal-link:hover { border-color: var(--accent); color: var(--text); }
 
     /* About */
     .about-section { min-height: 460px; }
@@ -442,81 +582,19 @@
   <!-- Work — video background -->
   <section id="work" class="video-section work-section">
     <div class="video-bg">
-      <video autoplay muted loop playsinline>
-      </video>
+      <video autoplay muted loop playsinline></video>
     </div>
     <div class="video-overlay"></div>
     <div class="container">
       <div class="section-label">Selected work</div>
-      <div class="projects-list">
-
-        <a href="https://vimeo.com/showcase/8661055" target="_blank" rel="noopener" class="project-card fade-up">
-          <span class="project-date">May 2025</span>
-          <div>
-            <div class="project-title">Multimodal success story</div>
-            <div class="project-desc">Testimonial development for fleet and leasing audiences at Connected Cars.</div>
-          </div>
-          <span class="project-tag">Content strategy</span>
-          <span class="project-arrow">→</span>
-        </a>
-
-        <div class="project-divider"></div>
-
-        <a href="https://vimeo.com/showcase/8661055" target="_blank" rel="noopener" class="project-card fade-up">
-          <span class="project-date">Jun 2022</span>
-          <div>
-            <div class="project-title">3D trading platform</div>
-            <div class="project-desc">Visual animation and narrative direction for a financial platform launch.</div>
-          </div>
-          <span class="project-tag">Direction</span>
-          <span class="project-arrow">→</span>
-        </a>
-
-        <div class="project-divider"></div>
-
-        <a href="https://youtube.com/mdg936" target="_blank" rel="noopener" class="project-card fade-up">
-          <span class="project-date">Nov 2021</span>
-          <div>
-            <div class="project-title">STEM show production</div>
-            <div class="project-desc">Global show production across formats and cross-cultural audiences.</div>
-          </div>
-          <span class="project-tag">Production</span>
-          <span class="project-arrow">→</span>
-        </a>
-
-        <div class="project-divider"></div>
-
-        <a href="https://vimeo.com/showcase/8661055" target="_blank" rel="noopener" class="project-card fade-up">
-          <span class="project-date">Aug 2021</span>
-          <div>
-            <div class="project-title">EU project video</div>
-            <div class="project-desc">Direction and scripting for Arduino and TU Braunschweig's European research initiative.</div>
-          </div>
-          <span class="project-tag">Video</span>
-          <span class="project-arrow">→</span>
-        </a>
-
-        <div class="project-divider"></div>
-
-        <a href="#" class="project-card fade-up">
-          <span class="project-date">Oct 2018</span>
-          <div>
-            <div class="project-title">Healthcare campaign</div>
-            <div class="project-desc">Paid advertising to reach Danish patients with precision.</div>
-          </div>
-          <span class="project-tag">Campaign</span>
-          <span class="project-arrow">→</span>
-        </a>
-
-      </div>
+      <div class="projects-list" id="projects-list"></div>
     </div>
   </section>
 
   <!-- About — video background -->
   <section id="about" class="video-section about-section">
     <div class="video-bg">
-      <video autoplay muted loop playsinline>
-      </video>
+      <video autoplay muted loop playsinline></video>
     </div>
     <div class="video-overlay"></div>
     <div class="container">
@@ -581,7 +659,138 @@
     </div>
   </footer>
 
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <div>
+          <div class="modal-meta">
+            <span class="modal-date" id="modal-date"></span>
+            <span class="modal-tag" id="modal-tag"></span>
+          </div>
+          <div class="modal-title" id="modal-title"></div>
+        </div>
+        <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-detail" id="modal-detail"></p>
+        <div id="modal-media"></div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // ─── Projects data ──────────────────────────────────────────────────────────
+    // To add a project: append an object to this array with the fields below.
+    // type: 'vimeo' | 'youtube' | 'link'
+    // embedId: the video ID from the URL (vimeo.com/76979871 → '76979871')
+    // url: used when type is 'link'
+    const projects = [
+      {
+        date: 'May 2025',
+        title: 'Multimodal success story',
+        desc: 'Testimonial development for fleet and leasing audiences at Connected Cars.',
+        detail: 'A testimonial series developed for Connected Cars fleet and leasing audiences, combining written case studies, video interviews, and social formats into a single coherent narrative.',
+        tag: 'Content strategy',
+        type: 'vimeo',
+        embedId: '76979871'
+      },
+      {
+        date: 'Jun 2022',
+        title: '3D trading platform',
+        desc: 'Visual animation and narrative direction for a financial platform launch.',
+        detail: 'Direction and scripting for a launch campaign for a 3D-rendered financial trading platform. Responsible for narrative arc, visual language, and final delivery across digital formats.',
+        tag: 'Direction',
+        type: 'vimeo',
+        embedId: '76979871'
+      },
+      {
+        date: 'Nov 2021',
+        title: 'STEM show production',
+        desc: 'Global show production across formats and cross-cultural audiences.',
+        detail: 'Production and editorial coordination for a STEM-focused show distributed globally. Managed cross-cultural tone adaptation, format versioning, and multi-platform delivery.',
+        tag: 'Production',
+        type: 'youtube',
+        embedId: 'dQw4w9WgXcQ'
+      },
+      {
+        date: 'Aug 2021',
+        title: 'EU project video',
+        desc: 'Direction and scripting for Arduino and TU Braunschweig\'s European research initiative.',
+        detail: 'Video direction and script development for a European research project jointly produced by Arduino and TU Braunschweig. Delivered for EU programme reporting and public dissemination.',
+        tag: 'Video',
+        type: 'vimeo',
+        embedId: '76979871'
+      },
+      {
+        date: 'Oct 2018',
+        title: 'Healthcare campaign',
+        desc: 'Paid advertising to reach Danish patients with precision.',
+        detail: 'Planned and executed a paid media campaign targeting Danish patients across social and search channels. Handled copy, audience segmentation, and performance reporting.',
+        tag: 'Campaign',
+        type: 'link',
+        url: '#'
+      }
+    ];
+
+    // ─── Render project list ────────────────────────────────────────────────────
+    const list = document.getElementById('projects-list');
+    projects.forEach((p, i) => {
+      if (i > 0) {
+        const divider = document.createElement('div');
+        divider.className = 'project-divider';
+        list.appendChild(divider);
+      }
+      const btn = document.createElement('button');
+      btn.className = 'project-card fade-up';
+      btn.innerHTML = `
+        <span class="project-date">${p.date}</span>
+        <div>
+          <div class="project-title">${p.title}</div>
+          <div class="project-desc">${p.desc}</div>
+        </div>
+        <span class="project-tag">${p.tag}</span>
+        <span class="project-arrow">→</span>
+      `;
+      btn.addEventListener('click', () => openModal(p));
+      list.appendChild(btn);
+    });
+
+    // ─── Modal logic ────────────────────────────────────────────────────────────
+    const backdrop = document.getElementById('modal-backdrop');
+    const modalClose = document.getElementById('modal-close');
+
+    function openModal(p) {
+      document.getElementById('modal-date').textContent = p.date;
+      document.getElementById('modal-tag').textContent = p.tag;
+      document.getElementById('modal-title').textContent = p.title;
+      document.getElementById('modal-detail').textContent = p.detail;
+
+      const media = document.getElementById('modal-media');
+      if (p.type === 'vimeo') {
+        media.innerHTML = `<div class="modal-embed"><iframe src="https://player.vimeo.com/video/${p.embedId}?autoplay=1&color=daf2fe&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+      } else if (p.type === 'youtube') {
+        media.innerHTML = `<div class="modal-embed"><iframe src="https://www.youtube.com/embed/${p.embedId}?autoplay=1&rel=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+      } else {
+        media.innerHTML = `<a href="${p.url}" target="_blank" rel="noopener" class="modal-link">View project ↗</a>`;
+      }
+
+      backdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      backdrop.classList.remove('open');
+      document.body.style.overflow = '';
+      // Stop video by clearing the iframe src
+      document.getElementById('modal-media').innerHTML = '';
+    }
+
+    backdrop.addEventListener('click', (e) => { if (e.target === backdrop) closeModal(); });
+    modalClose.addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    // ─── Theme toggle ────────────────────────────────────────────────────────────
     function toggleTheme() {
       const html = document.documentElement;
       const isDark = html.getAttribute('data-theme') === 'dark';
@@ -596,6 +805,7 @@
       document.getElementById('toggle-label').textContent = 'Dark';
     }
 
+    // ─── Fade-up observer ────────────────────────────────────────────────────────
     const observer = new IntersectionObserver(
       (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
       { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
