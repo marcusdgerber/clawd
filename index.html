@@ -6,37 +6,38 @@
   <title>Marcus Gerber — Writer & Content Strategist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* Cold blue-grey base, burnt orange as highlight only */
+    /* Arctic aircraft window — cold cyan-white, zero purple, high altitude */
+
     :root[data-theme="dark"] {
-      --bg:        #0a0f14;
-      --surface:   #111920;
-      --border:    #1e2c38;
-      --muted:     #3a5060;
-      --text:      #d8e8f0;
-      --text-dim:  #6a8898;
-      --accent:    #c8501a;
-      --accent-hi: #e06030;
-      --nav-bg:    rgba(8,14,20,0.88);
-      --overlay:   rgba(4,8,14,0.56);
-      --vid-bg:    #0c1820;
+      --bg:        #060c12;
+      --surface:   rgba(195,228,248,0.05);
+      --border:    rgba(195,228,248,0.10);
+      --muted:     rgba(195,228,248,0.30);
+      --text:      rgba(222,242,254,0.93);
+      --text-dim:  rgba(195,228,248,0.46);
+      --accent:    rgba(218,242,255,0.88);
+      --accent-dim:rgba(175,218,240,0.12);
+      --nav-bg:    rgba(4,10,18,0.80);
+      --overlay:   rgba(2,8,16,0.52);
+      --vid-bg:    #0a1822;
     }
 
     :root[data-theme="light"] {
-      --bg:        #e8f0f6;
-      --surface:   #d8e4ee;
-      --border:    #b0c8dc;
-      --muted:     #6888a0;
-      --text:      #060e16;
-      --text-dim:  #2a4458;
-      --accent:    #b84418;
-      --accent-hi: #d05020;
-      --nav-bg:    rgba(232,240,246,0.92);
-      --overlay:   rgba(232,240,246,0.5);
-      --vid-bg:    #c0d4e4;
+      --bg:        #e4f2fa;
+      --surface:   #d2e8f6;
+      --border:    #a8ccE4;
+      --muted:     #5a90b0;
+      --text:      #040e18;
+      --text-dim:  #1e4a62;
+      --accent:    #083858;
+      --accent-dim:#b8d8ee;
+      --nav-bg:    rgba(228,242,250,0.92);
+      --overlay:   rgba(228,242,250,0.55);
+      --vid-bg:    #c0dcf0;
     }
 
     html { scroll-behavior: smooth; }
@@ -51,7 +52,11 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    .container { max-width: 1040px; margin: 0 auto; padding: 0 28px; }
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
 
     /* Nav */
     nav {
@@ -80,44 +85,52 @@
       font-weight: 500;
       color: var(--text);
       text-decoration: none;
-      letter-spacing: 0.02em;
     }
 
-    .nav-right { display: flex; align-items: center; gap: 36px; }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
 
-    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
 
     .nav-links a {
       color: var(--text-dim);
       text-decoration: none;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       transition: color 0.15s;
     }
 
-    .nav-links a:hover { color: var(--accent-hi); }
+    .nav-links a:hover { color: var(--text); }
 
     .theme-toggle {
       background: none;
       border: 1px solid var(--border);
-      border-radius: 3px;
+      border-radius: 20px;
       cursor: pointer;
       padding: 5px 10px;
       display: flex;
       align-items: center;
       gap: 6px;
       color: var(--text-dim);
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-family: inherit;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       transition: border-color 0.15s, color 0.15s;
+      white-space: nowrap;
     }
 
-    .theme-toggle:hover { border-color: var(--accent); color: var(--accent-hi); }
-    .theme-toggle svg { width: 12px; height: 12px; flex-shrink: 0; }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--text); }
+    .theme-toggle svg { width: 13px; height: 13px; flex-shrink: 0; }
     .icon-sun { display: none; }
     .icon-moon { display: block; }
     [data-theme="light"] .icon-sun { display: block; }
@@ -127,39 +140,13 @@
     .video-section { position: relative; overflow: hidden; }
     .video-bg { position: absolute; inset: 0; z-index: 0; }
 
-    .video-placeholder {
+    .video-bg video {
       position: absolute;
       inset: 0;
-      background: var(--vid-bg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      border: 1px dashed var(--border);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-
-    .video-placeholder svg { opacity: 0.2; color: var(--text); }
-
-    .video-placeholder-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .video-placeholder-note {
-      font-size: 0.7rem;
-      color: var(--muted);
-      text-transform: none;
-      letter-spacing: 0;
-      line-height: 1.5;
-      max-width: 240px;
-      text-align: center;
-      opacity: 0.7;
-    }
-
-    .video-bg video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
     .video-overlay {
       position: absolute;
@@ -179,23 +166,23 @@
     }
 
     .hero-location {
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 28px;
+      color: var(--text-dim);
+      margin-bottom: 32px;
       display: flex;
       align-items: center;
       gap: 10px;
-      font-weight: 500;
     }
 
     .hero-location::before {
       content: '';
       display: block;
-      width: 20px;
-      height: 2px;
+      width: 16px;
+      height: 1px;
       background: var(--accent);
+      opacity: 0.5;
     }
 
     .hero-bio {
@@ -215,20 +202,18 @@
       align-items: center;
       gap: 8px;
       padding: 11px 24px;
-      border-radius: 3px;
+      border-radius: 4px;
       font-family: inherit;
-      font-size: 0.82rem;
+      font-size: 0.875rem;
       font-weight: 500;
-      letter-spacing: 0.04em;
       text-decoration: none;
       cursor: pointer;
       border: none;
       transition: all 0.15s;
-      text-transform: uppercase;
     }
 
-    .btn-primary { background: var(--accent); color: #fff; }
-    .btn-primary:hover { background: var(--accent-hi); }
+    .btn-primary { background: rgba(255,255,255,0.18); color: rgba(255,255,255,0.95); border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(8px); }
+    .btn-primary:hover { opacity: 0.85; }
 
     .btn-ghost {
       background: transparent;
@@ -236,7 +221,7 @@
       border: 1px solid var(--border);
     }
 
-    .btn-ghost:hover { border-color: var(--accent); color: var(--accent-hi); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--text); }
 
     /* Sections */
     section { padding: 96px 0; border-bottom: 1px solid var(--border); }
@@ -245,11 +230,11 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--muted);
       margin-bottom: 56px;
     }
 
@@ -258,36 +243,6 @@
       flex: 1;
       height: 1px;
       background: var(--border);
-    }
-
-    /* Image placeholders */
-    .img-placeholder {
-      background: var(--surface);
-      border: 1px dashed var(--border);
-      border-radius: 3px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .img-placeholder svg { opacity: 0.25; }
-
-    .img-note {
-      font-size: 0.7rem;
-      color: var(--muted);
-      text-transform: none;
-      letter-spacing: 0;
-      line-height: 1.45;
-      max-width: 180px;
-      opacity: 0.7;
     }
 
     /* Work */
@@ -301,7 +256,7 @@
       gap: 28px;
       padding: 22px 20px;
       border: 1px solid transparent;
-      border-radius: 3px;
+      border-radius: 6px;
       text-decoration: none;
       color: inherit;
       transition: background 0.15s, border-color 0.15s;
@@ -312,37 +267,31 @@
     .project-card:hover .project-arrow {
       opacity: 1;
       transform: translateX(0);
-      color: var(--accent-hi);
     }
 
     .project-divider { height: 1px; background: var(--border); margin: 0 20px; }
-    .project-date { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.03em; }
+    .project-date { font-size: 0.78rem; color: var(--muted); }
     .project-title { font-size: 1rem; font-weight: 500; margin-bottom: 3px; }
     .project-desc { font-size: 0.855rem; color: var(--text-dim); font-weight: 300; }
 
     .project-tag {
       padding: 3px 10px;
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      border-radius: 2px;
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.7);
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
       white-space: nowrap;
       text-transform: uppercase;
     }
 
-    .project-card:hover .project-tag {
-      border-color: var(--accent);
-      color: var(--accent-hi);
-    }
-
     .project-arrow {
-      color: var(--muted);
+      color: var(--accent);
       opacity: 0;
       transform: translateX(-5px);
-      transition: opacity 0.15s, transform 0.15s, color 0.15s;
+      transition: opacity 0.15s, transform 0.15s;
     }
 
     /* About */
@@ -358,33 +307,15 @@
     .about-img { width: 100%; aspect-ratio: 1/1; }
 
     .about-heading {
-      font-size: clamp(1.4rem, 2.4vw, 1.9rem);
-      line-height: 1.2;
-      font-weight: 500;
+      font-size: clamp(1.5rem, 2.6vw, 2rem);
+      line-height: 1.25;
+      font-weight: 400;
       margin-bottom: 24px;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.012em;
     }
 
     .about-text { color: var(--text-dim); font-weight: 300; line-height: 1.8; font-size: 1rem; }
     .about-text + .about-text { margin-top: 16px; }
-
-    .skills-wrap { display: flex; flex-direction: column; gap: 8px; margin-top: 32px; }
-    .skill-row { display: flex; gap: 8px; }
-
-    .skill-item {
-      flex: 1;
-      padding: 10px 14px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      font-size: 0.8rem;
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      color: var(--text-dim);
-      transition: border-color 0.15s, color 0.15s;
-    }
-
-    .skill-item:hover { border-color: var(--accent); color: var(--accent-hi); }
 
     /* Connect */
     .connect-grid {
@@ -397,10 +328,10 @@
     .connect-img { width: 100%; aspect-ratio: 3/2; }
 
     .connect-heading {
-      font-size: clamp(1.4rem, 2.4vw, 1.9rem);
-      font-weight: 500;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
+      font-size: clamp(1.5rem, 2.6vw, 2rem);
+      font-weight: 400;
+      line-height: 1.22;
+      letter-spacing: -0.012em;
       margin-bottom: 32px;
     }
 
@@ -413,35 +344,34 @@
       padding: 12px 18px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 3px;
+      border-radius: 6px;
       text-decoration: none;
       color: var(--text-dim);
       font-size: 0.875rem;
       transition: border-color 0.15s, color 0.15s;
     }
 
-    .social-link:hover { border-color: var(--accent); color: var(--accent-hi); }
-    .social-icon { width: 16px; height: 16px; opacity: 0.4; flex-shrink: 0; }
+    .social-link:hover { border-color: var(--accent); color: var(--text); }
+    .social-icon { width: 16px; height: 16px; opacity: 0.45; flex-shrink: 0; }
 
     /* Footer */
     footer { padding: 32px 0; }
 
     .footer-inner { display: flex; align-items: center; justify-content: space-between; }
-    .footer-copy { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.03em; }
+    .footer-copy { font-size: 0.78rem; color: var(--muted); }
 
     .footer-tag {
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: var(--muted);
       display: flex;
       align-items: center;
       gap: 7px;
-      letter-spacing: 0.03em;
     }
 
     .footer-dot {
       width: 5px; height: 5px;
       border-radius: 50%;
-      background: var(--accent);
+      background: #3a9e60;
       animation: pulse 2.5s ease-in-out infinite;
     }
 
@@ -494,14 +424,6 @@
   <!-- Hero — video background -->
   <section class="hero video-section">
     <div class="video-bg">
-      <!--
-        VIDEO SLOT — HERO
-        Suggested: condensation on a train window, Copenhagen streets,
-        the Øresund from above. Slow, ambient, no cuts.
-        Replace with: <video autoplay muted loop playsinline>
-          <source src="hero.webm" type="video/webm">
-        </video>
-      -->
       <video autoplay muted loop playsinline>
         <source src="automotive-loyalty-dark-master.webm" type="video/webm">
       </video>
@@ -520,15 +442,7 @@
   <!-- Work — video background -->
   <section id="work" class="video-section work-section">
     <div class="video-bg">
-      <!--
-        VIDEO SLOT — WORK
-        Suggested: hands on keyboard, screen with doc open. Desaturated works well.
-        Replace with: <video autoplay muted loop playsinline>
-          <source src="work-bg.webm" type="video/webm">
-        </video>
-      -->
       <video autoplay muted loop playsinline>
-        <!-- <source src="work-bg.webm" type="video/webm"> -->
       </video>
     </div>
     <div class="video-overlay"></div>
@@ -601,15 +515,7 @@
   <!-- About — video background -->
   <section id="about" class="video-section about-section">
     <div class="video-bg">
-      <!--
-        VIDEO SLOT — ABOUT
-        Suggested: Øresund bridge, Helsingborg or Copenhagen waterfront, slow pan.
-        Replace with: <video autoplay muted loop playsinline>
-          <source src="about-bg.webm" type="video/webm">
-        </video>
-      -->
       <video autoplay muted loop playsinline>
-        <!-- <source src="about-bg.webm" type="video/webm"> -->
       </video>
     </div>
     <div class="video-overlay"></div>
