@@ -6,33 +6,37 @@
   <title>Marcus Gerber — Writer & Content Strategist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ── Themes ── */
+    /* Cold blue-grey base, burnt orange as highlight only */
     :root[data-theme="dark"] {
-      --bg:        #0e0e0d;
-      --surface:   #161614;
-      --border:    #272724;
-      --muted:     #5a5a54;
-      --text:      #e9e7e0;
-      --text-dim:  #8a8880;
-      --nav-bg:    rgba(14,14,13,0.88);
-      --overlay:   rgba(0,0,0,0.62);
-      --vid-bg:    #111110;
+      --bg:        #0a0f14;
+      --surface:   #111920;
+      --border:    #1e2c38;
+      --muted:     #3a5060;
+      --text:      #d8e8f0;
+      --text-dim:  #6a8898;
+      --accent:    #c8501a;
+      --accent-hi: #e06030;
+      --nav-bg:    rgba(8,14,20,0.88);
+      --overlay:   rgba(4,8,14,0.56);
+      --vid-bg:    #0c1820;
     }
 
     :root[data-theme="light"] {
-      --bg:        #f5f4f0;
-      --surface:   #eceae4;
-      --border:    #d8d5cc;
-      --muted:     #9e9b93;
-      --text:      #1a1916;
-      --text-dim:  #5a574f;
-      --nav-bg:    rgba(245,244,240,0.92);
-      --overlay:   rgba(245,244,240,0.55);
-      --vid-bg:    #e0ded8;
+      --bg:        #e8f0f6;
+      --surface:   #d8e4ee;
+      --border:    #b0c8dc;
+      --muted:     #6888a0;
+      --text:      #060e16;
+      --text-dim:  #2a4458;
+      --accent:    #b84418;
+      --accent-hi: #d05020;
+      --nav-bg:    rgba(232,240,246,0.92);
+      --overlay:   rgba(232,240,246,0.5);
+      --vid-bg:    #c0d4e4;
     }
 
     html { scroll-behavior: smooth; }
@@ -47,13 +51,9 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    .container {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 0 28px;
-    }
+    .container { max-width: 1040px; margin: 0 auto; padding: 0 28px; }
 
-    /* ── Nav ── */
+    /* Nav */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -80,81 +80,53 @@
       font-weight: 500;
       color: var(--text);
       text-decoration: none;
+      letter-spacing: 0.02em;
     }
 
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-    }
+    .nav-right { display: flex; align-items: center; gap: 36px; }
 
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
 
     .nav-links a {
       color: var(--text-dim);
       text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       transition: color 0.15s;
     }
 
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover { color: var(--accent-hi); }
 
-    /* Theme toggle */
     .theme-toggle {
       background: none;
       border: 1px solid var(--border);
-      border-radius: 20px;
+      border-radius: 3px;
       cursor: pointer;
       padding: 5px 10px;
       display: flex;
       align-items: center;
       gap: 6px;
       color: var(--text-dim);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-family: inherit;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       transition: border-color 0.15s, color 0.15s;
-      white-space: nowrap;
     }
 
-    .theme-toggle:hover {
-      border-color: var(--text-dim);
-      color: var(--text);
-    }
-
-    .theme-toggle svg {
-      width: 13px;
-      height: 13px;
-      flex-shrink: 0;
-    }
-
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent-hi); }
+    .theme-toggle svg { width: 12px; height: 12px; flex-shrink: 0; }
     .icon-sun { display: none; }
     .icon-moon { display: block; }
-
     [data-theme="light"] .icon-sun { display: block; }
     [data-theme="light"] .icon-moon { display: none; }
 
-    /* ── Video section base ── */
-    .video-section {
-      position: relative;
-      overflow: hidden;
-    }
+    /* Video sections */
+    .video-section { position: relative; overflow: hidden; }
+    .video-bg { position: absolute; inset: 0; z-index: 0; }
 
-    .video-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-
-    /* Placeholder state — shown when no video is loaded */
     .video-placeholder {
       position: absolute;
       inset: 0;
@@ -170,14 +142,14 @@
     .video-placeholder svg { opacity: 0.2; color: var(--text); }
 
     .video-placeholder-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
     }
 
     .video-placeholder-note {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--muted);
       text-transform: none;
       letter-spacing: 0;
@@ -187,16 +159,8 @@
       opacity: 0.7;
     }
 
-    /* Actual video element */
-    .video-bg video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .video-bg video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
-    /* Dark overlay so text stays readable over video */
     .video-overlay {
       position: absolute;
       inset: 0;
@@ -205,12 +169,9 @@
       transition: background 0.3s;
     }
 
-    .video-section .container {
-      position: relative;
-      z-index: 2;
-    }
+    .video-section .container { position: relative; z-index: 2; }
 
-    /* ── Hero ── */
+    /* Hero */
     .hero {
       padding: 160px 0 96px;
       border-bottom: 1px solid var(--border);
@@ -218,71 +179,56 @@
     }
 
     .hero-location {
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 32px;
+      color: var(--accent);
+      margin-bottom: 28px;
       display: flex;
       align-items: center;
       gap: 10px;
+      font-weight: 500;
     }
 
     .hero-location::before {
       content: '';
       display: block;
-      width: 16px;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .hero-heading {
-      font-size: clamp(2.4rem, 5vw, 4.4rem);
-      line-height: 1.1;
-      font-weight: 400;
-      letter-spacing: -0.022em;
-      max-width: 680px;
-      margin-bottom: 32px;
+      width: 20px;
+      height: 2px;
+      background: var(--accent);
     }
 
     .hero-bio {
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       font-weight: 300;
       color: var(--text-dim);
-      max-width: 460px;
+      max-width: 480px;
       line-height: 1.8;
       margin-bottom: 48px;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
 
-    /* ── Buttons ── */
+    /* Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 11px 24px;
-      border-radius: 4px;
+      border-radius: 3px;
       font-family: inherit;
-      font-size: 0.875rem;
+      font-size: 0.82rem;
       font-weight: 500;
+      letter-spacing: 0.04em;
       text-decoration: none;
       cursor: pointer;
       border: none;
       transition: all 0.15s;
+      text-transform: uppercase;
     }
 
-    .btn-primary {
-      background: var(--text);
-      color: var(--bg);
-    }
-
-    .btn-primary:hover { opacity: 0.85; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hi); }
 
     .btn-ghost {
       background: transparent;
@@ -290,26 +236,20 @@
       border: 1px solid var(--border);
     }
 
-    .btn-ghost:hover {
-      border-color: var(--text-dim);
-      color: var(--text);
-    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent-hi); }
 
-    /* ── Sections ── */
-    section {
-      padding: 96px 0;
-      border-bottom: 1px solid var(--border);
-    }
+    /* Sections */
+    section { padding: 96px 0; border-bottom: 1px solid var(--border); }
 
     .section-label {
       display: flex;
       align-items: center;
       gap: 14px;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--accent);
       margin-bottom: 56px;
     }
 
@@ -320,11 +260,38 @@
       background: var(--border);
     }
 
-    /* ── Work ── */
-    .work-section {
-      min-height: 400px;
+    /* Image placeholders */
+    .img-placeholder {
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 20px;
     }
 
+    .img-placeholder svg { opacity: 0.25; }
+
+    .img-note {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: none;
+      letter-spacing: 0;
+      line-height: 1.45;
+      max-width: 180px;
+      opacity: 0.7;
+    }
+
+    /* Work */
+    .work-section { min-height: 400px; }
     .projects-list { display: flex; flex-direction: column; }
 
     .project-card {
@@ -334,58 +301,52 @@
       gap: 28px;
       padding: 22px 20px;
       border: 1px solid transparent;
-      border-radius: 6px;
+      border-radius: 3px;
       text-decoration: none;
       color: inherit;
       transition: background 0.15s, border-color 0.15s;
     }
 
-    .project-card:hover {
-      background: var(--surface);
-      border-color: var(--border);
-    }
+    .project-card:hover { background: var(--surface); border-color: var(--border); }
 
     .project-card:hover .project-arrow {
       opacity: 1;
       transform: translateX(0);
+      color: var(--accent-hi);
     }
 
-    .project-divider {
-      height: 1px;
-      background: var(--border);
-      margin: 0 20px;
-    }
-
-    .project-date { font-size: 0.78rem; color: var(--muted); }
-
+    .project-divider { height: 1px; background: var(--border); margin: 0 20px; }
+    .project-date { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.03em; }
     .project-title { font-size: 1rem; font-weight: 500; margin-bottom: 3px; }
-
     .project-desc { font-size: 0.855rem; color: var(--text-dim); font-weight: 300; }
 
     .project-tag {
       padding: 3px 10px;
-      background: var(--surface);
+      background: transparent;
       border: 1px solid var(--border);
-      color: var(--text-dim);
-      border-radius: 4px;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
+      color: var(--muted);
+      border-radius: 2px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
       white-space: nowrap;
       text-transform: uppercase;
     }
 
-    .project-arrow {
-      color: var(--text-dim);
-      opacity: 0;
-      transform: translateX(-5px);
-      transition: opacity 0.15s, transform 0.15s;
+    .project-card:hover .project-tag {
+      border-color: var(--accent);
+      color: var(--accent-hi);
     }
 
-    /* ── About ── */
-    .about-section {
-      min-height: 460px;
+    .project-arrow {
+      color: var(--muted);
+      opacity: 0;
+      transform: translateX(-5px);
+      transition: opacity 0.15s, transform 0.15s, color 0.15s;
     }
+
+    /* About */
+    .about-section { min-height: 460px; }
 
     .about-grid {
       display: grid;
@@ -394,43 +355,20 @@
       align-items: start;
     }
 
-    /* Image/video placeholder in about */
-    .about-media {
-      width: 100%;
-      aspect-ratio: 4/5;
-      position: relative;
-      border-radius: 6px;
-      overflow: hidden;
-    }
-
-    .about-media .video-placeholder {
-      border-radius: 6px;
-    }
+    .about-img { width: 100%; aspect-ratio: 4/5; }
 
     .about-heading {
-      font-size: clamp(1.5rem, 2.6vw, 2rem);
-      line-height: 1.25;
-      font-weight: 400;
+      font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+      line-height: 1.2;
+      font-weight: 500;
       margin-bottom: 24px;
-      letter-spacing: -0.012em;
+      letter-spacing: -0.01em;
     }
 
-    .about-text {
-      color: var(--text-dim);
-      font-weight: 300;
-      line-height: 1.8;
-      font-size: 1rem;
-    }
-
+    .about-text { color: var(--text-dim); font-weight: 300; line-height: 1.8; font-size: 1rem; }
     .about-text + .about-text { margin-top: 16px; }
 
-    .skills-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 32px;
-    }
-
+    .skills-wrap { display: flex; flex-direction: column; gap: 8px; margin-top: 32px; }
     .skill-row { display: flex; gap: 8px; }
 
     .skill-item {
@@ -438,15 +376,17 @@
       padding: 10px 14px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 6px;
-      font-size: 0.83rem;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
       color: var(--text-dim);
       transition: border-color 0.15s, color 0.15s;
     }
 
-    .skill-item:hover { border-color: var(--text-dim); color: var(--text); }
+    .skill-item:hover { border-color: var(--accent); color: var(--accent-hi); }
 
-    /* ── Connect ── */
+    /* Connect */
     .connect-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -454,19 +394,13 @@
       align-items: start;
     }
 
-    .connect-img {
-      width: 100%;
-      aspect-ratio: 3/2;
-      position: relative;
-      border-radius: 6px;
-      overflow: hidden;
-    }
+    .connect-img { width: 100%; aspect-ratio: 3/2; }
 
     .connect-heading {
-      font-size: clamp(1.5rem, 2.6vw, 2rem);
-      font-weight: 400;
-      line-height: 1.22;
-      letter-spacing: -0.012em;
+      font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
       margin-bottom: 32px;
     }
 
@@ -479,40 +413,35 @@
       padding: 12px 18px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 6px;
+      border-radius: 3px;
       text-decoration: none;
       color: var(--text-dim);
       font-size: 0.875rem;
       transition: border-color 0.15s, color 0.15s;
     }
 
-    .social-link:hover { border-color: var(--text-dim); color: var(--text); }
+    .social-link:hover { border-color: var(--accent); color: var(--accent-hi); }
+    .social-icon { width: 16px; height: 16px; opacity: 0.4; flex-shrink: 0; }
 
-    .social-icon { width: 16px; height: 16px; opacity: 0.45; flex-shrink: 0; }
-
-    /* ── Footer ── */
+    /* Footer */
     footer { padding: 32px 0; }
 
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .footer-copy { font-size: 0.78rem; color: var(--muted); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+    .footer-copy { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.03em; }
 
     .footer-tag {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: var(--muted);
       display: flex;
       align-items: center;
       gap: 7px;
+      letter-spacing: 0.03em;
     }
 
     .footer-dot {
       width: 5px; height: 5px;
       border-radius: 50%;
-      background: #3a9e60;
+      background: var(--accent);
       animation: pulse 2.5s ease-in-out infinite;
     }
 
@@ -521,16 +450,9 @@
       50% { opacity: 0.3; }
     }
 
-    /* ── Fade-up ── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
+    .fade-up { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── Mobile ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hero { padding: 120px 0 72px; }
@@ -543,7 +465,6 @@
 </head>
 <body>
 
-  <!-- Nav -->
   <nav>
     <div class="nav-inner">
       <a href="#" class="nav-logo">Marcus Gerber</a>
@@ -554,21 +475,15 @@
           <li><a href="#connect">Connect</a></li>
         </ul>
         <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-          <!-- Moon icon (shown in dark mode) -->
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
           </svg>
-          <!-- Sun icon (shown in light mode) -->
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/>
-            <line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/>
-            <line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
           </svg>
           <span id="toggle-label">Light</span>
         </button>
@@ -581,16 +496,22 @@
     <div class="video-bg">
       <!--
         VIDEO SLOT — HERO
-        Replace the placeholder below with:
-        <video autoplay muted loop playsinline>
-          <source src="your-hero-video.mp4" type="video/mp4">
+        Suggested: condensation on a train window, Copenhagen streets,
+        the Øresund from above. Slow, ambient, no cuts.
+        Replace with: <video autoplay muted loop playsinline>
+          <source src="hero.webm" type="video/webm">
         </video>
-        Then remove the .video-placeholder div.
-        Suggested footage: city commute, Copenhagen streets, desk/work environment.
-        Keep it slow and ambient — no cuts, no text on screen.
       -->
+      <div class="video-placeholder">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="2" y="6" width="15" height="12" rx="2"/>
+          <path d="M17 9l5-3v12l-5-3V9z"/>
+        </svg>
+        <span class="video-placeholder-label">Hero background video</span>
+        <span class="video-placeholder-note">Condensation on a train window, Copenhagen, the Øresund from above.</span>
+      </div>
       <video autoplay muted loop playsinline>
-        <source src="automotive-loyalty-dark-master.webm" type="video/webm">
+        <!-- <source src="hero.webm" type="video/webm"> -->
       </video>
     </div>
     <div class="video-overlay"></div>
@@ -609,9 +530,10 @@
     <div class="video-bg">
       <!--
         VIDEO SLOT — WORK
-        Suggested footage: hands on keyboard, screen recording of a doc or slide,
-        something that reads as "someone making things." Desaturated works well here.
-        Replace placeholder with <video autoplay muted loop playsinline> as above.
+        Suggested: hands on keyboard, screen with doc open. Desaturated works well.
+        Replace with: <video autoplay muted loop playsinline>
+          <source src="work-bg.webm" type="video/webm">
+        </video>
       -->
       <div class="video-placeholder">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
@@ -619,10 +541,10 @@
           <path d="M17 9l5-3v12l-5-3V9z"/>
         </svg>
         <span class="video-placeholder-label">Work section background video</span>
-        <span class="video-placeholder-note">Hands on keyboard, a screen, something that reads as someone making things.</span>
+        <span class="video-placeholder-note">Hands on keyboard, a screen. Someone making things.</span>
       </div>
       <video autoplay muted loop playsinline>
-        <!-- <source src="work-bg.mp4" type="video/mp4"> -->
+        <!-- <source src="work-bg.webm" type="video/webm"> -->
       </video>
     </div>
     <div class="video-overlay"></div>
@@ -697,9 +619,10 @@
     <div class="video-bg">
       <!--
         VIDEO SLOT — ABOUT
-        Suggested footage: Øresund bridge, Helsingborg or Copenhagen, somewhere
-        that puts you geographically without being a travel ad. Keep it still or slow pan.
-        Replace placeholder with <video autoplay muted loop playsinline> as above.
+        Suggested: Øresund bridge, Helsingborg or Copenhagen waterfront, slow pan.
+        Replace with: <video autoplay muted loop playsinline>
+          <source src="about-bg.webm" type="video/webm">
+        </video>
       -->
       <div class="video-placeholder">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
@@ -707,10 +630,10 @@
           <path d="M17 9l5-3v12l-5-3V9z"/>
         </svg>
         <span class="video-placeholder-label">About section background video</span>
-        <span class="video-placeholder-note">Øresund, Helsingborg or Copenhagen. Somewhere that places you without being a travel ad.</span>
+        <span class="video-placeholder-note">Øresund, Helsingborg or Copenhagen. Somewhere that places you.</span>
       </div>
       <video autoplay muted loop playsinline>
-        <!-- <source src="about-bg.mp4" type="video/mp4"> -->
+        <!-- <source src="about-bg.webm" type="video/webm"> -->
       </video>
     </div>
     <div class="video-overlay"></div>
@@ -719,14 +642,14 @@
       <div class="about-grid">
 
         <div class="fade-up">
-          <div class="about-media">
-            <!--
-              IMAGE SLOT — ABOUT PORTRAIT
-              Replace with: <img src="your-photo.jpg" alt="Marcus Gerber"
-                style="width:100%;height:100%;object-fit:cover;">
-              Portrait or candid. Something that looks like a person who works, not a headshot.
-            -->
-            <img src="Gerber_Marcus.JPG" alt="Marcus Gerber" style="width:100%;height:100%;object-fit:cover;">
+          <div class="img-placeholder about-img">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+            Photo of you
+            <span class="img-note">Portrait or candid. Something that looks like a person who works, not a headshot.</span>
           </div>
         </div>
 
@@ -758,7 +681,7 @@
     </div>
   </section>
 
-  <!-- Connect — no video -->
+  <!-- Connect -->
   <section id="connect">
     <div class="container">
       <div class="section-label">Connect</div>
@@ -783,22 +706,14 @@
         </div>
 
         <div class="fade-up">
-          <div class="connect-img">
-            <!--
-              IMAGE SLOT — CONNECT
-              Replace with: <img src="your-photo.jpg" alt="..."
-                style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
-              A desk, a city, a view. Not a stock photo.
-            -->
-            <div class="video-placeholder" style="height:100%;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="3" y="3" width="18" height="18" rx="2"/>
-                <circle cx="8.5" cy="8.5" r="1.5"/>
-                <path d="M21 15l-5-5L5 21"/>
-              </svg>
-              <span class="video-placeholder-label">Photo — place or work</span>
-              <span class="video-placeholder-note">A desk, a city, a view. Not a stock photo.</span>
-            </div>
+          <div class="img-placeholder connect-img">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+            Photo — place or work
+            <span class="img-note">A desk, a city, a view. Not a stock photo.</span>
           </div>
         </div>
 
@@ -806,7 +721,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="footer-inner">
@@ -820,7 +734,6 @@
   </footer>
 
   <script>
-    // Theme toggle
     function toggleTheme() {
       const html = document.documentElement;
       const isDark = html.getAttribute('data-theme') === 'dark';
@@ -829,14 +742,12 @@
       localStorage.setItem('theme', isDark ? 'light' : 'dark');
     }
 
-    // Restore saved preference
     const saved = localStorage.getItem('theme');
     if (saved && saved !== 'dark') {
       document.documentElement.setAttribute('data-theme', saved);
       document.getElementById('toggle-label').textContent = 'Dark';
     }
 
-    // Fade-up on scroll
     const observer = new IntersectionObserver(
       (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
       { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
