@@ -434,6 +434,14 @@
 
     .modal-link:hover { border-color: var(--accent); color: var(--text); }
 
+    .modal-video-caption {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
     .modal-article {
       margin-top: 36px;
       padding-top: 32px;
@@ -788,8 +796,10 @@
         desc: 'Global show production across formats and cross-cultural audiences.',
         detail: 'Production and editorial coordination for a STEM-focused show distributed globally. Managed cross-cultural tone adaptation, format versioning, and multi-platform delivery.',
         tag: 'Production',
-        type: 'link',
-        url: 'https://vimeo.com/827529654',
+        videos: [
+          { type: 'youtube', embedId: 'IsEf3OEZpgA', caption: 'EDUvision episode' },
+          { type: 'youtube', embedId: 't5g_iF5z08I', caption: 'Holiday special — weekly format, themed episodes, live across social platforms and podcast' }
+        ],
         article: {
           date: 'November 18, 2021',
           title: 'Producing a global STEM show',
@@ -871,7 +881,17 @@
       document.getElementById('modal-detail').textContent = p.detail;
 
       const media = document.getElementById('modal-media');
-      if (p.type === 'vimeo') {
+      if (p.videos) {
+        media.innerHTML = p.videos.map(v => `
+          <div style="margin-bottom: 20px;">
+            ${v.caption ? `<p class="modal-video-caption">${v.caption}</p>` : ''}
+            <div class="modal-embed"><iframe src="${v.type === 'youtube'
+              ? `https://www.youtube.com/embed/${v.embedId}?rel=0`
+              : `https://player.vimeo.com/video/${v.embedId}?color=daf2fe&title=0&byline=0&portrait=0`
+            }" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          </div>
+        `).join('');
+      } else if (p.type === 'vimeo') {
         const hashParam = p.embedHash ? `&h=${p.embedHash}` : '';
         media.innerHTML = `<div class="modal-embed"><iframe src="https://player.vimeo.com/video/${p.embedId}?autoplay=1${hashParam}&color=daf2fe&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
       } else if (p.type === 'youtube') {
