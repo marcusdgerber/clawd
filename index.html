@@ -19,7 +19,8 @@
       --muted:     rgba(195,228,248,0.30);
       --text:      rgba(222,242,254,0.93);
       --text-dim:  rgba(195,228,248,0.46);
-      --accent:    rgba(218,242,255,0.88);
+      --accent:    #c8501a;
+      --accent-hi: #e06030;
       --accent-dim:rgba(175,218,240,0.12);
       --nav-bg:    rgba(4,10,18,0.80);
       --overlay:   rgba(2,8,16,0.52);
@@ -109,7 +110,7 @@
       transition: color 0.15s;
     }
 
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover { color: var(--accent-hi); }
 
     .theme-toggle {
       background: none;
@@ -129,7 +130,7 @@
       white-space: nowrap;
     }
 
-    .theme-toggle:hover { border-color: var(--accent); color: var(--text); }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent-hi); }
     .theme-toggle svg { width: 13px; height: 13px; flex-shrink: 0; }
     .icon-sun { display: none; }
     .icon-moon { display: block; }
@@ -169,7 +170,7 @@
       font-size: 0.78rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text-dim);
+      color: var(--accent);
       margin-bottom: 32px;
       display: flex;
       align-items: center;
@@ -221,7 +222,7 @@
       border: 1px solid var(--border);
     }
 
-    .btn-ghost:hover { border-color: var(--accent); color: var(--text); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent-hi); }
 
     /* Sections */
     section { padding: 96px 0; border-bottom: 1px solid var(--border); }
@@ -234,7 +235,7 @@
       font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--accent);
       margin-bottom: 56px;
     }
 
@@ -558,7 +559,7 @@
       transition: border-color 0.15s, color 0.15s;
     }
 
-    .social-link:hover { border-color: var(--accent); color: var(--text); }
+    .social-link:hover { border-color: var(--accent); color: var(--accent-hi); }
     .social-icon { width: 16px; height: 16px; opacity: 0.45; flex-shrink: 0; }
 
     /* Footer */
@@ -578,7 +579,7 @@
     .footer-dot {
       width: 5px; height: 5px;
       border-radius: 50%;
-      background: #3a9e60;
+      background: var(--accent);
       animation: pulse 2.5s ease-in-out infinite;
     }
 
