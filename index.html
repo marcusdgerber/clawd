@@ -434,6 +434,65 @@
 
     .modal-link:hover { border-color: var(--accent); color: var(--text); }
 
+    .modal-article {
+      margin-top: 36px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(195,228,248,0.08);
+    }
+
+    .modal-article-date {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .modal-article-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+
+    .modal-article-body { display: flex; flex-direction: column; gap: 16px; }
+
+    .modal-article-body p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--text-dim);
+      line-height: 1.8;
+    }
+
+    .modal-article-body h3 {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .modal-article-body ul {
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .modal-article-body li {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .modal-article-body a {
+      color: var(--text);
+      text-underline-offset: 3px;
+    }
+
+    .modal-article-body a:hover { color: var(--accent); }
+
     /* About */
     .about-section { min-height: 460px; }
 
@@ -675,6 +734,7 @@
       <div class="modal-body">
         <p class="modal-detail" id="modal-detail"></p>
         <div id="modal-media"></div>
+        <div id="modal-article" class="modal-article" style="display:none;"></div>
       </div>
     </div>
   </div>
@@ -694,7 +754,33 @@
         tag: 'Content strategy',
         type: 'vimeo',
         embedId: '1066922092',
-        embedHash: 'e06d1d783f'
+        embedHash: 'e06d1d783f',
+        article: {
+          date: 'May 21, 2025',
+          title: 'How a testimonial became a multimodal success story at Connected Cars',
+          html: `
+            <h3>Starting with a real-world voice</h3>
+            <p>The idea started with a car dealer who had been using our solutions and seeing clear benefits. After we reached out, he agreed to share his experience. I prepared interview questions focused on uncovering how our tools affected his daily operations, aiming for practical insights and specific examples. We visited his location, recorded the full conversation on camera, and took photos to support the story. Since video production would take time, I wrote a complete case study shortly after our visit so we could begin sharing the content quickly.</p>
+            <p>You can read the published success story here:<br><a href="https://connectedcars.io/videos/how-volkswagen-randers-transformed-its-aftersales-service/" target="_blank" rel="noopener">How Volkswagen Randers transformed its after-sales service with ConnectedWorkshop ↗</a></p>
+            <h3>Building momentum through channels</h3>
+            <p>The article was written with SEO in mind and also focused on human detail. We used images from the visit and structured the story to reflect experience, expertise, authority, and trust. Once published, we promoted the content across several channels:</p>
+            <ul>
+              <li>A feature in our newsletter to drive direct traffic</li>
+              <li>Tailored posts for LinkedIn and Twitter</li>
+              <li>An updated version of the article that included the final video</li>
+            </ul>
+            <p>By releasing the content in phases, we extended its visibility and gave it more chances to connect with our audience.</p>
+            <h3>Outcomes and reflections</h3>
+            <p>The campaign delivered strong results:</p>
+            <ul>
+              <li>The article performed better than comparable pieces</li>
+              <li>The video helped increase time spent on the page</li>
+              <li>Prospects mentioned the story during demos and outreach</li>
+            </ul>
+            <p>Most importantly, it gave us a credible reference for future conversations. This was not about promotional language but about a real person using our product, seeing results, and explaining how it worked for them.</p>
+            <p>The project succeeded because it was built with multiple layers. We created a story that could be adapted across formats and timelines, offering more ways for people to engage on their own terms.</p>
+          `
+        }
       },
       {
         date: 'Nov 2021',
@@ -766,6 +852,19 @@
         media.innerHTML = `<div class="modal-embed"><iframe src="https://www.youtube.com/embed/${p.embedId}?autoplay=1&rel=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
       } else {
         media.innerHTML = `<a href="${p.url}" target="_blank" rel="noopener" class="modal-link">View project ↗</a>`;
+      }
+
+      const articleEl = document.getElementById('modal-article');
+      if (p.article) {
+        articleEl.innerHTML = `
+          <div class="modal-article-date">${p.article.date}</div>
+          <div class="modal-article-title">${p.article.title}</div>
+          <div class="modal-article-body">${p.article.html}</div>
+        `;
+        articleEl.style.display = '';
+      } else {
+        articleEl.innerHTML = '';
+        articleEl.style.display = 'none';
       }
 
       backdrop.classList.add('open');
