@@ -692,8 +692,9 @@
         desc: 'Testimonial development for fleet and leasing audiences at Connected Cars.',
         detail: 'A testimonial series developed for Connected Cars fleet and leasing audiences, combining written case studies, video interviews, and social formats into a single coherent narrative.',
         tag: 'Content strategy',
-        type: 'link',
-        url: 'https://connectedcars.io/videos/how-volkswagen-randers-transformed-its-aftersales-service/'
+        type: 'vimeo',
+        embedId: '1066922092',
+        embedHash: 'e06d1d783f'
       },
       {
         date: 'Jun 2022',
@@ -768,7 +769,8 @@
 
       const media = document.getElementById('modal-media');
       if (p.type === 'vimeo') {
-        media.innerHTML = `<div class="modal-embed"><iframe src="https://player.vimeo.com/video/${p.embedId}?autoplay=1&color=daf2fe&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+        const hashParam = p.embedHash ? `&h=${p.embedHash}` : '';
+        media.innerHTML = `<div class="modal-embed"><iframe src="https://player.vimeo.com/video/${p.embedId}?autoplay=1${hashParam}&color=daf2fe&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
       } else if (p.type === 'youtube') {
         media.innerHTML = `<div class="modal-embed"><iframe src="https://www.youtube.com/embed/${p.embedId}?autoplay=1&rel=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
       } else {
