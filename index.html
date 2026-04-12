@@ -573,24 +573,39 @@
       margin-bottom: 32px;
     }
 
-    .social-links { display: flex; flex-direction: column; gap: 8px; }
+    .social-links { display: flex; flex-direction: column; }
 
     .social-link {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 12px 18px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 6px;
+      padding: 16px 0;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--border);
       text-decoration: none;
       color: var(--text-dim);
       font-size: 0.875rem;
       transition: border-color 0.15s, color 0.15s;
     }
 
-    .social-link:hover { border-color: var(--accent); color: var(--accent-hi); }
-    .social-icon { width: 16px; height: 16px; opacity: 0.45; flex-shrink: 0; }
+    .social-link:hover { border-bottom-color: var(--accent); color: var(--text); }
+
+    .social-link:hover .social-arrow {
+      opacity: 1;
+      transform: translateX(0);
+      color: var(--accent-hi);
+    }
+
+    .social-icon { width: 16px; height: 16px; opacity: 0.3; flex-shrink: 0; }
+
+    .social-arrow {
+      margin-left: auto;
+      color: var(--muted);
+      opacity: 0;
+      transform: translateX(-5px);
+      transition: opacity 0.15s, transform 0.15s, color 0.15s;
+    }
 
     /* Footer */
     footer { padding: 32px 0; }
@@ -721,15 +736,15 @@
           <div class="social-links">
             <a href="https://linkedin.com/in/marcus-gerber" target="_blank" rel="noopener" class="social-link">
               <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              LinkedIn
+              LinkedIn<span class="social-arrow">→</span>
             </a>
             <a href="https://vimeo.com/showcase/8661055" target="_blank" rel="noopener" class="social-link">
               <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 12.5C4.603 9.913 3.83 8.618 3 8.618c-.194 0-.87.407-2.012 1.216L0 8.475c1.265-1.112 2.514-2.224 3.746-3.337C5.42 3.685 6.687 3.03 7.54 2.952c2.01-.19 3.24 1.176 3.7 4.098.5 3.164.847 5.13 1.047 5.9.58 2.648 1.218 3.97 1.915 3.97.54 0 1.35-.852 2.44-2.556 1.086-1.704 1.665-3.002 1.74-3.898.155-1.474-.427-2.21-1.742-2.21-.622 0-1.262.144-1.927.425 1.282-4.196 3.726-6.232 7.33-6.107 2.674.077 3.934 1.812 3.774 5.18v-.338z"/></svg>
-              Vimeo
+              Vimeo<span class="social-arrow">→</span>
             </a>
             <a href="https://www.youtube.com/@mdg936/" target="_blank" rel="noopener" class="social-link">
               <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-              YouTube
+              YouTube<span class="social-arrow">→</span>
             </a>
           </div>
         </div>
