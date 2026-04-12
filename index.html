@@ -105,13 +105,18 @@
       color: var(--text-dim);
       text-decoration: none;
       font-size: 0.82rem;
-      font-weight: 400;
+      font-weight: 300;
+      font-variation-settings: 'wght' 300;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      transition: color 0.15s;
+      transition: color 0.15s, font-variation-settings 0.2s;
     }
 
-    .nav-links a:hover { color: var(--accent-hi); }
+    .nav-links a:hover {
+      color: var(--accent-hi);
+      font-weight: 500;
+      font-variation-settings: 'wght' 500;
+    }
 
     .theme-toggle {
       background: none;
