@@ -162,7 +162,7 @@
 
     /* Hero */
     .hero {
-      padding: 160px 0 96px;
+      padding: 220px 0 96px;
       border-bottom: 1px solid var(--border);
       min-height: 520px;
     }
@@ -196,7 +196,25 @@
       margin-bottom: 48px;
     }
 
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .hero-link {
+      display: inline-block;
+      margin-top: 32px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .hero-arrow {
+      display: inline-block;
+      transition: transform 0.15s;
+    }
+
+    .hero-link:hover { color: var(--text); }
+    .hero-link:hover .hero-arrow { transform: translateX(4px); }
 
     /* Buttons */
     .btn {
@@ -647,6 +665,7 @@
     <div class="container">
       <div class="hero-location">Helsingborg / Copenhagen</div>
       <p class="hero-bio">I work in marketing and communications at Connected Cars in Copenhagen. Managing content strategy, social media and advertising campaigns.</p>
+      <a href="#work" class="hero-link">View my work <span class="hero-arrow">→</span></a>
     </div>
   </section>
 
