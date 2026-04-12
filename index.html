@@ -558,10 +558,10 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 56px;
-      align-items: stretch;
+      align-items: start;
     }
 
-    .connect-img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 3px; }
+    .connect-img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; border-radius: 3px; }
 
     .connect-heading {
       font-size: clamp(1.5rem, 2.6vw, 2rem);
@@ -572,7 +572,7 @@
     }
 
     #connect { padding-bottom: 48px; }
-    #connect .section-label { margin-bottom: 0; }
+    #connect .section-label { margin-bottom: 56px; }
     .social-links { display: flex; flex-direction: column; }
 
     .social-link {
