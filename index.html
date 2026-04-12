@@ -277,7 +277,7 @@
     }
 
     /* Work */
-    .work-section { min-height: 400px; }
+    .work-section { }
     .projects-list { display: flex; flex-direction: column; }
 
     .project-card {
@@ -533,12 +533,10 @@
     .modal-article-body a:hover { color: var(--accent); }
 
     /* About */
-    .about-section { min-height: 460px; }
-
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 72px;
+      gap: 56px;
       align-items: start;
     }
 
@@ -559,11 +557,11 @@
     .connect-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: start;
+      gap: 56px;
+      align-items: stretch;
     }
 
-    .connect-img { width: 100%; aspect-ratio: 3/2; }
+    .connect-img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 3px; }
 
     .connect-heading {
       font-size: clamp(1.5rem, 2.6vw, 2rem);
@@ -749,7 +747,7 @@
         </div>
 
         <div class="fade-up">
-          <img src="1733250645915.jpeg" alt="" class="connect-img" style="object-fit: cover; border-radius: 3px; display: block;">
+          <img src="1733250645915.jpeg" alt="" class="connect-img">
         </div>
 
       </div>
