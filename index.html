@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marcus Gerber — Writer & Content Strategist</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -553,60 +554,6 @@
     .about-text { color: var(--text-dim); font-weight: 300; line-height: 1.8; font-size: 1rem; }
     .about-text + .about-text { margin-top: 16px; }
 
-    /* Connect */
-    .connect-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      align-items: start;
-    }
-
-    .connect-img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; border-radius: 3px; }
-
-    .connect-heading {
-      font-size: clamp(1.5rem, 2.6vw, 2rem);
-      font-weight: 400;
-      line-height: 1.22;
-      letter-spacing: -0.012em;
-      margin-bottom: 32px;
-    }
-
-    #connect { padding-bottom: 48px; }
-    #connect .section-label { margin-bottom: 56px; }
-    .social-links { display: flex; flex-direction: column; }
-
-    .social-link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 16px 0;
-      background: none;
-      border: none;
-      border-bottom: 1px solid var(--border);
-      text-decoration: none;
-      color: var(--text-dim);
-      font-size: 0.875rem;
-      transition: border-color 0.15s, color 0.15s;
-    }
-
-    .social-link:hover { border-bottom-color: var(--accent); color: var(--text); }
-
-    .social-link:hover .social-arrow {
-      opacity: 1;
-      transform: translateX(0);
-      color: var(--accent-hi);
-    }
-
-    .social-icon { width: 16px; height: 16px; opacity: 0.3; flex-shrink: 0; }
-
-    .social-arrow {
-      margin-left: auto;
-      color: var(--muted);
-      opacity: 0;
-      transform: translateX(-5px);
-      transition: opacity 0.15s, transform 0.15s, color 0.15s;
-    }
-
     /* Footer */
     footer { padding: 32px 0; }
 
@@ -639,7 +586,7 @@
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hero { padding: 120px 0 72px; }
-      .about-grid, .connect-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
       .project-card { grid-template-columns: 1fr; gap: 6px; padding: 18px; }
       .project-tag, .project-date { display: none; }
       .footer-inner { flex-direction: column; gap: 10px; text-align: center; }
@@ -657,7 +604,6 @@
         <ul class="nav-links">
           <li><a href="#work">Work</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#connect">Connect</a></li>
         </ul>
         <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -685,8 +631,7 @@
     </div>
     <div class="video-overlay"></div>
     <div class="container">
-      <div class="hero-location">Helsingborg / Copenhagen</div>
-      <p class="hero-bio">Managing content strategy, social media and advertising campaigns across Scandinavia. Making complex products easier to understand.</p>
+      <p class="hero-bio">I make complex products easier to understand and harder to ignore.</p>
       <a href="#work" class="hero-link">View my work <span class="hero-arrow">→</span></a>
     </div>
   </section>
@@ -718,36 +663,9 @@
         </div>
 
         <div class="fade-up">
-          <h2 class="about-heading">Based in Helsingborg, working across the Øresund</h2>
+          <h2 class="about-heading">Working across the Øresund</h2>
           <p class="about-text">Originally from Chicago. Studied in Lund, taught English in Shenzhen. Ended up in marketing, across Malmö, Stockholm and Copenhagen.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Connect -->
-  <section id="connect">
-    <div class="container">
-      <div class="section-label">Connect</div>
-      <div class="connect-grid">
-
-        <div class="fade-up">
-          <div class="social-links">
-            <a href="https://linkedin.com/in/marcus-gerber" target="_blank" rel="noopener" class="social-link">
-              LinkedIn<span class="social-arrow">→</span>
-            </a>
-            <a href="https://vimeo.com/showcase/8661055" target="_blank" rel="noopener" class="social-link">
-              Vimeo<span class="social-arrow">→</span>
-            </a>
-            <a href="https://www.youtube.com/@mdg936/" target="_blank" rel="noopener" class="social-link">
-              YouTube<span class="social-arrow">→</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="fade-up">
-          <img src="1733250645915.jpeg" alt="" class="connect-img">
+          <p class="about-text">I work with brands that have something genuinely worth saying but haven't quite found the way to say it. That usually means getting close to the product, understanding who it's for, and building campaigns across written, video, paid and organic. Owned the calendar, the briefs and the work that helps close deals.</p>
         </div>
 
       </div>
@@ -762,6 +680,7 @@
           <span class="footer-dot"></span>
           Available for projects
         </span>
+        <a href="https://linkedin.com/in/marcus-gerber" target="_blank" rel="noopener" class="footer-copy" style="text-decoration:none;opacity:0.6;transition:opacity 0.15s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">LinkedIn ↗</a>
       </div>
     </div>
   </footer>
@@ -795,6 +714,27 @@
     // url: used when type is 'link'
     const projects = [
       {
+        date: '2023–2026',
+        title: 'Worldly & connectedcars.io',
+        desc: 'Built Worldly, a free geography quiz and travel tracker, from concept to launch. Site management and copywriting ownership for connectedcars.io.',
+        detail: 'A personal web project alongside professional site ownership, each reflecting the same discipline.',
+        tag: 'Web',
+        type: 'images',
+        images: [
+          { src: 'worldly-dashboard.png', url: 'https://worldly.academy', caption: 'Worldly' },
+          { src: 'screenshot-connectedcars.io.png', url: 'https://connectedcars.io', caption: 'connectedcars.io' }
+        ],
+        article: {
+          date: '2023–2026',
+          title: 'Building and owning web content',
+          html: `
+            <p>Worldly is a free geography learning platform I designed and built from scratch in 2026, combining interactive quizzes across 200 countries with a personal travel tracker. The full stack, design, copy and product logic were built independently.</p>
+            <p>On the professional side, I've owned the site management and copywriting for connectedcars.io since 2023, a B2B SaaS platform serving importers, dealers and OEMs across the automotive industry. That means owning the messaging architecture of the site, from product pages and landing pages to case studies and navigation copy, and keeping it coherent as the product evolves.</p>
+            <p>Both projects reflect the same discipline of understanding site structure and content ownership together. This site was built from scratch too, for what it's worth.</p>
+          `
+        }
+      },
+      {
         date: 'May 2025',
         title: 'Connected Cars customer story',
         desc: 'Testimonial production targeting Volkswagen. A workshop aftersales manager making the case for Connected Cars to their network.',
@@ -815,40 +755,40 @@
         }
       },
       {
+        date: '2022–2023',
+        title: 'SEO content at Nucleus',
+        desc: 'SEO content strategy and writing for major B2C clients including Fyndiq and Zmarta, blog posts, landing pages, category copy and explainer articles across competitive e-commerce verticals.',
+        detail: 'Content Specialist at Nucleus, a Stockholm-based marketing consultancy, producing SEO-optimised content for major B2C brands throughout 2022 and 2023.',
+        tag: 'Content strategy',
+        type: 'link',
+        article: {
+          date: '2022–2023',
+          title: 'SEO content at scale for major e-commerce clients',
+          html: `
+            <p>Nucleus was a leading Stockholm-based content and marketing consultancy. Throughout 2022 and 2023 I worked as a Content Specialist, managing client relationships and producing SEO-optimised content across a range of B2C brands.</p>
+            <p>Clients included major Swedish e-commerce platforms and pharmaceutical companies. Output spanned blog posts, product category descriptions, landing pages, service pages and explainer articles.</p>
+            <p>Several articles ranked first for their target search queries. Landing pages saw conversion rate improvements of over 30%. Clients could see traffic and sales impact from the work.</p>
+            <p>The majority of the work was ghostwritten under client brands, so there's little to point to directly. That was the nature of the role: producing content that served someone else's voice at scale, across industries, without a byline.</p>
+          `
+        }
+      },
+      {
         date: 'Nov 2021',
         title: 'Arduino EDUvision',
-        desc: 'Produced multiple seasons of a live global STEM show across social platforms, podcast and multi-format distribution.',
-        detail: 'Multiple seasons of a live STEM show for Arduino, distributed across social platforms, podcast and YouTube.',
-        tag: 'Production',
+        desc: 'Grew Arduino\'s live STEM show into a multi-format content programme, doubling viewership and engagement across a brand with millions of social followers.',
+        detail: 'Content strategy and production for Arduino\'s flagship education show, reaching thousands of live viewers per episode across YouTube, podcast and social.',
+        tag: 'Content strategy',
         videos: [
           { type: 'youtube', embedId: 'IsEf3OEZpgA', caption: 'EDUvision episode' },
           { type: 'youtube', embedId: 't5g_iF5z08I', caption: 'Holiday special — weekly format, themed episodes, live across social platforms and podcast' }
         ],
         article: {
           date: 'November 18, 2021',
-          title: 'Producing a global STEM show',
+          title: 'Growing a global STEM show for a brand with millions of followers',
           html: `
-            <p>EDUvision was Arduino's live web show for educators, makers and technologists. I came on as producer across multiple seasons and took it from early two-person streams to a structured, multi-format production with a global audience.</p>
-            <p>Each season had a thematic arc covering AI, IoT, ethics, space and accessibility, with a full production cycle behind it. I handled creative direction, scripting, guest booking, live production, motion assets and visual identity. I also built out the episode format between seasons, introduced multi-camera setups and professional audio, and created promo kits for social and newsletter distribution.</p>
-            <p>Partway through the run I launched the EDUvision Podcast, extending the show to Spotify and Apple Podcasts with longer-form guest interviews.</p>
-          `
-        }
-      },
-      {
-        date: 'Aug 2021',
-        title: 'Covid distancing platform for factory floors',
-        desc: 'EU-funded project for an Arduino and TU Braunschweig partnership building proximity sensors to monitor social distancing on factory floors during Covid.',
-        detail: 'Video direction and script development for a European research project jointly produced by Arduino and TU Braunschweig. Delivered for EU programme reporting and public dissemination.',
-        tag: 'Video',
-        type: 'vimeo',
-        embedId: '533167748',
-        article: {
-          date: 'August 12, 2021',
-          title: 'Directing an EU project video for Arduino and TU Braunschweig',
-          html: `
-            <p>In 2021, I directed a video for an EU-funded collaboration between the Technical University of Braunschweig and Arduino. The contributors were spread across multiple countries, so the entire production had to work without me being on site.</p>
-            <p>I wrote the script, created shot lists for each team, and gave direction on how to deliver lines on camera. Every clip, lab footage, talking heads and location shots, was filmed locally by participants and sent back for editing. The challenge was making footage from different countries, different cameras and different people cut together cleanly.</p>
-            <p>Alongside this project I worked across Arduino's wider content output: a cloud services ad for developers, a social promo for their EDUvision education series, social media posts and tutorials.</p>
+            <p>Arduino is one of the most recognised names in engineering and maker culture, with millions of followers across social platforms and a highly engaged global community. EDUvision was their live web show for educators, makers and technologists. I came on as producer to grow it.</p>
+            <p>I restructured the content strategy around each episode: higher production values, new promotional formats and assets developed specifically to build anticipation and extend reach. Viewership and engagement doubled over the run, with each episode drawing several thousand live viewers and dozens of live comments. I also launched the EDUvision Podcast, bringing the show to Spotify and Apple Podcasts to reach audiences beyond the live format.</p>
+            <p>EDUvision was one part of a broader role at Arduino. Alongside it I produced advertisements, tutorials and educational content, coordinating across multiple teams and projects simultaneously</p>
           `
         }
       },
@@ -920,6 +860,14 @@
         media.innerHTML = `<div class="modal-embed"><iframe src="https://player.vimeo.com/video/${p.embedId}?autoplay=1${hashParam}&color=daf2fe&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
       } else if (p.type === 'youtube') {
         media.innerHTML = `<div class="modal-embed"><iframe src="https://www.youtube.com/embed/${p.embedId}?autoplay=1&rel=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+      } else if (p.type === 'images') {
+        media.innerHTML = p.images.map(img => `
+          <div style="margin-bottom:24px;">
+            ${img.caption ? `<p class="modal-video-caption">${img.caption}</p>` : ''}
+            <img src="${img.src}" alt="${img.caption || ''}" style="width:100%;border-radius:3px;display:block;margin-bottom:8px;">
+            ${img.url ? `<a href="${img.url}" target="_blank" rel="noopener" class="modal-link">Visit site ↗</a>` : ''}
+          </div>
+        `).join('');
       } else {
         media.innerHTML = `<a href="${p.url}" target="_blank" rel="noopener" class="modal-link">View project ↗</a>`;
       }
